@@ -35,7 +35,7 @@ export class TeamPageComponent implements OnInit {
     }
    };*/
 
-  team: Team[]=[];
+  team: any[]=[];
   termino: number = 0;
 
 
@@ -43,19 +43,18 @@ export class TeamPageComponent implements OnInit {
   constructor(private _teamService: TeamService) { }
 
   ngOnInit(): void {    
+
+    this.buscar();
   }
 
   buscar(){
     
     console.log(this.termino);
     this._teamService.getTeams(this.termino)    
-    .subscribe( team =>{
+    .subscribe( (team:any) =>{
 
       this.team = team;
       console.log('este:', this.team);
-
-     
-
     }           
 
     );
